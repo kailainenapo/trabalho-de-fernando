@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    int camisa;
+    int idade;
+    float altura;
+    char nome[50];
+} Jogador;
+
+void lerJogadores(Jogador jogadores[]) {
+    printf("Cadastro de Jogadores:\n");
+    for(int i = 0; i < 11; i++) {
+        printf("\nJogador %d:\n", i+1);
+        printf("Numero da camisa: ");
+        scanf("%d", &jogadores[i].camisa);
+        printf("Idade: ");
+        scanf("%d", &jogadores[i].idade);
+        printf("Altura (em metros): ");
+        scanf("%f", &jogadores[i].altura);
+        printf("Nome: ");
+        scanf("%s", jogadores[i].nome);
+    }
+}
+
+void exibirJogadores(Jogador jogadores[]) {
+    printf("\nLista completa de jogadores:\n");
+    for(int i = 0; i < 11; i++) {
+        printf("\nJogador %d:\n", i+1);
+        printf("Camisa: %d\n", jogadores[i].camisa);
+        printf("Nome: %s\n", jogadores[i].nome);
+        printf("Idade: %d anos\n", jogadores[i].idade);
+        printf("Altura: %.2fm\n", jogadores[i].altura);
+    }
+}
+
+int main() {
+    Jogador jogadores[11];
+    
+    lerJogadores(jogadores);
+    exibirJogadores(jogadores);
+
+    int indice_baixo = 0;
+    for(int i = 1; i < 11; i++) {
+        if(jogadores[i].altura < jogadores[indice_baixo].altura) {
+            indice_baixo = i;
+        }
+    }
+
+   
+    int indice_novo = 0;
+    for(int i = 1; i < 11; i++) {
+        if(jogadores[i].idade < jogadores[indice_novo].idade) {
+            indice_novo = i;
+        }
+    }
+
+    printf("\nInicial do jogador mais baixo: %c\n", jogadores[indice_baixo].nome[0]);
+    printf("Numero do jogador mais novo: %d\n", jogadores[indice_novo].camisa);
+
+    return 0;
+}
