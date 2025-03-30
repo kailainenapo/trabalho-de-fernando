@@ -1,0 +1,26 @@
+#include <stdio.h> 
+
+void strins(char s[], char c, int p) {
+    int tam = 0;
+    
+    while(s[tam] != '\0') {
+        tam++;
+    }
+    
+    if(p < 0 || p > tam) return;
+    
+    for(int i = tam; i >= p; i--) {
+        s[i + 1] = s[i];
+    }
+    
+    s[p] = c;
+}
+
+int main() {
+    char cidade[20] = "Joanesburgo"; 
+    
+    strins(cidade, 'c', 4); 
+    
+    printf("%s", cidade);
+    return 0;
+}
