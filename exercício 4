@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void altera_vetor(int vet[]) {
+    vet[0] = -1;  
+    vet[1] = 10;  
+}
+
+int main() {
+    int vet[5], i;
+    
+    printf("Digite 5 numeros:\n");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &vet[i]);
+    }
+    
+    printf("\nVetor original:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", vet[i]);
+    }
+  
+    altera_vetor(vet);
+    
+    printf("\n\nVetor modificado:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", vet[i]);
+    }
+    
+    return 0;
+}
