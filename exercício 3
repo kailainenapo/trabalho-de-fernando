@@ -1,0 +1,91 @@
+#include <stdio.h>
+
+int main() {
+    int mat[5][5], i, j, op, calc;
+    
+    printf("Digite 25 numeros:\n");
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j < 5; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    
+  
+    printf("\nMatriz:\n");
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j < 5; j++) {
+            printf("%2d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+    
+    
+    printf("\n1-Soma 2-Multiplicacao: ");
+    scanf("%d", &op);
+    
+    
+    printf("\n1-Linhas\n2-Colunas\n3-Diagonal Principal\n");
+    printf("4-Diagonal Secundaria\n5-Borda\n6-Internos\nOpcao: ");
+    scanf("%d", &calc);
+    
+    if(calc == 1) { 
+        for(i = 0; i < 5; i++) {
+            int res = (op == 1) ? 0 : 1;
+            for(j = 0; j < 5; j++) {
+                if(op == 1) res += mat[i][j];
+                else res *= mat[i][j];
+            }
+            printf("Linha %d: %d\n", i, res);
+        }
+    }
+    else if(calc == 2) { 
+        for(j = 0; j < 5; j++) {
+            int res = (op == 1) ? 0 : 1;
+            for(i = 0; i < 5; i++) {
+                if(op == 1) res += mat[i][j];
+                else res *= mat[i][j];
+            }
+            printf("Coluna %d: %d\n", j, res);
+        }
+    }
+    else if(calc == 3) { 
+        int res = (op == 1) ? 0 : 1;
+        for(i = 0; i < 5; i++) {
+            if(op == 1) res += mat[i][i];
+            else res *= mat[i][i];
+        }
+        printf("Diagonal Principal: %d\n", res);
+    }
+    else if(calc == 4) { 
+        int res = (op == 1) ? 0 : 1;
+        for(i = 0; i < 5; i++) {
+            if(op == 1) res += mat[i][4-i];
+            else res *= mat[i][4-i];
+        }
+        printf("Diagonal Secundaria: %d\n", res);
+    }
+    else if(calc == 5) { 
+        int res = (op == 1) ? 0 : 1;
+        for(i = 0; i < 5; i++) {
+            for(j = 0; j < 5; j++) {
+                if(i == 0 || i == 4 || j == 0 || j == 4) {
+                    if(op == 1) res += mat[i][j];
+                    else res *= mat[i][j];
+                }
+            }
+        }
+        printf("Borda: %d\n", res);
+    }
+    else if(calc == 6) { 
+        int res = (op == 1) ? 0 : 1;
+        for(i = 1; i < 4; i++) {
+            for(j = 1; j < 4; j++) {
+                if(op == 1) res += mat[i][j];
+                else res *= mat[i][j];
+            }
+        }
+        printf("Internos: %d\n", res);
+    }
+    
+    return 0;
+}
